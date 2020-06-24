@@ -1,0 +1,55 @@
+spring:
+  #配置服务名称
+  application:
+    name: zuul
+  #配置禁止配置中心将客户端配置覆盖
+  cloud:
+    config:
+      override-none: true
+
+#配置端口
+server:
+  port: 3001
+
+#配置服务的发现与注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2001/eureka, http://localhost:2002/eureka
+
+#zuul:
+#  routes:
+#    item-service: /item-service/**
+#    user-service: /user-service/**
+#    order-service: /order-service/**
+
+
+zuul:
+  #配置zuul开启重试机制(默认开启了负载均衡机制)
+  retryable: true
+  #配置不过滤默认的cookie,set-cookie,authorization请求头
+  #\u914D\u7F6E\u4E0D\u8FC7\u6EE4\u9ED8\u8BA4\u7684cookie,set-cookie,authorization\u8BF7\u6C42\u5934
+  sensitive-headers:
+
+#配置集成的ribbon的连接超时时限
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 1000
+  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 1
+
+#配置降级超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 500
+
+#配置监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
