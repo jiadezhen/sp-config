@@ -8,8 +8,10 @@ spring:
 server:
     port: 8001
 
+#配置eureka
 eureka:
     client:
         service-url:
             defaultZone: http://localhost:2001/eureka
+
 

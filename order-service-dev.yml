@@ -13,7 +13,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:2001/eureka
 
-
+#配置开启降级与熔断
 feign:
   hystrix:
     enabled: true
