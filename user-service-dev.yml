@@ -18,7 +18,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:2001/eureka
 
-#添加动态刷新配置
+#添加动态刷新配置1
 management:
   endpoints:
     web:
